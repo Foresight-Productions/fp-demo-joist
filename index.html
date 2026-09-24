@@ -56,6 +56,7 @@
   --on-teal-line:oklch(0.97 0.008 120 / .16);
   --cell-none:oklch(0.72 0.015 215);
   --danger:oklch(0.52 0.17 30);
+  --night:oklch(0.2 0.04 236);
   --wrap:min(76rem,100% - 2.5rem);
   --ease:cubic-bezier(0.16,1,0.3,1);
   --cut:12px;
@@ -72,7 +73,7 @@ h2{font-size:clamp(2.1rem,3.6vw,3rem);line-height:1.06;letter-spacing:-0.02em}
 h3{font-size:1.3125rem;line-height:1.25;letter-spacing:-0.01em}
 p{margin:0 0 1rem;max-width:62ch;text-wrap:pretty}
 .wrap{width:var(--wrap);margin-inline:auto}
-.band{padding-block:clamp(4.5rem,9vw,7.5rem)}
+.band{padding-block:clamp(5rem,10vw,9rem)}
 .lede{font-size:1.3125rem;line-height:1.5}
 .muted{color:var(--slate)}
 .chamfer{clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut))}
@@ -183,23 +184,32 @@ a[href^="tel:"]{white-space:nowrap}
 .pr-side p:last-child{color:var(--slate);font-size:1rem;margin:0;max-width:36ch}
 
 /* About */
-.about{background:var(--chalk)}
-.about-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(2.5rem,5vw,5rem);align-items:start}
-.about-photo{margin:0}
-.about-photo img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:72% 45%;--cut:20px}
-.about-photo figcaption{font-size:.875rem;color:var(--slate);margin-top:.75rem}
-.about-copy h2{margin-bottom:1.5rem}
-.creds{list-style:none;padding:0;margin:1.75rem 0 0;border-top:1px solid var(--line)}
-.creds li{padding:.9rem 0 .9rem 1.4rem;border-bottom:1px solid var(--line);position:relative;font-size:1rem}
-.creds li::before{content:"";position:absolute;left:0;top:1.35rem;width:8px;height:8px;background:var(--teal)}
-.creds a{color:var(--teal);text-underline-offset:3px}
-.team{display:grid;grid-template-columns:auto 1fr 1fr;gap:2rem 3rem;align-items:center;margin-top:clamp(3.5rem,7vw,5.5rem);padding-top:2.5rem;border-top:2px solid var(--ink)}
-.team h3{font-size:1.3125rem;max-width:9em}
-.person{display:grid;grid-template-columns:6.5rem 1fr;gap:1.25rem;align-items:center}
-.person img{width:6.5rem;height:6.5rem;object-fit:cover}
-.person strong{display:block;font-size:1.0625rem;font-weight:600}
-.person .role{display:block;font-size:.9375rem;color:var(--slate);margin-bottom:.35rem}
-.person a{display:inline-flex;align-items:center;min-height:32px;font-size:.9375rem;color:var(--teal);text-underline-offset:3px;font-variant-numeric:tabular-nums;margin-right:1rem}
+.about{background:var(--chalk);padding-bottom:clamp(5rem,10vw,9rem)}
+.about-hero{position:relative;margin:0;height:min(92vh,58vw);min-height:30rem;overflow:hidden;color:var(--on-teal);background:var(--night)}
+.about-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 40%}
+.about-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,oklch(0.18 0.04 236 / .88) 0%,oklch(0.18 0.04 236 / .45) 38%,oklch(0.18 0.04 236 / 0) 65%),linear-gradient(to right,oklch(0.18 0.04 236 / .5) 0%,oklch(0.18 0.04 236 / 0) 55%)}
+.about-hero figcaption{position:absolute;left:0;right:0;bottom:clamp(2.5rem,6vw,5rem);z-index:1}
+.about-hero h2{font-size:clamp(2.4rem,5vw,4.25rem);line-height:1.02;letter-spacing:-0.025em;max-width:12em}
+.about-hero p{margin:1.25rem 0 0;color:var(--on-teal-soft);font-size:1rem}
+.about-body{padding-top:clamp(4rem,8vw,7rem)}
+.about-lede{font-size:clamp(1.45rem,2.3vw,1.95rem);line-height:1.42;letter-spacing:-0.01em;max-width:34em;margin:0 0 clamp(3.5rem,6vw,5rem)}
+.about-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem clamp(2rem,4vw,4rem);margin:0}
+.about-facts div::before{content:"";display:block;width:2.5rem;height:4px;background:var(--teal);margin-bottom:1.25rem}
+.about-facts dt{font-weight:700;font-stretch:var(--wide);font-size:1.25rem;line-height:1.25;letter-spacing:-0.01em;margin-bottom:.45rem}
+.about-facts dd{margin:0;color:var(--slate);font-size:1rem;line-height:1.5}
+.about-facts a{color:var(--teal);text-underline-offset:3px}
+.team{margin-top:clamp(5rem,10vw,8rem)}
+.team-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:1rem 3rem;margin-bottom:2.5rem}
+.team-head h3{font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.1;letter-spacing:-0.02em}
+.team-head p{margin:0;color:var(--slate);max-width:26rem;font-size:1rem}
+.people{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,3vw,2.5rem)}
+.person{margin:0}
+.person img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;--cut:18px;margin-bottom:1.25rem;background:var(--sage)}
+.person h4{margin:0;font-size:1.1875rem;font-weight:700;font-stretch:var(--wide);letter-spacing:-0.01em}
+.person .role{display:block;color:var(--slate);font-size:.9375rem;margin:.2rem 0 .4rem}
+.person .links{display:flex;flex-wrap:wrap;gap:0 1.5rem}
+.person a{display:inline-flex;align-items:center;min-height:44px;color:var(--teal);font-size:.9375rem;font-weight:500;text-decoration:none;font-variant-numeric:tabular-nums}
+.person a:hover{text-decoration:underline;text-underline-offset:3px}
 .person a:active{opacity:.6}
 
 /* Process */
@@ -241,17 +251,18 @@ a[href^="tel:"]{white-space:nowrap}
 .faq-src a{color:var(--teal)}
 
 /* Contact */
-.contact{background:var(--sage-deep)}
-.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:3rem clamp(3rem,6vw,6rem)}
+.contact{background:var(--teal-deep);color:var(--on-teal)}
+.contact .muted{color:var(--on-teal-soft)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:3rem clamp(3rem,6vw,6rem);align-items:start}
 .contact-grid h2{margin-bottom:1.25rem}
-.big-tel{display:inline-flex;align-items:center;min-height:44px;font-size:clamp(2rem,4vw,2.75rem);font-weight:700;font-stretch:var(--wide);letter-spacing:-0.02em;color:var(--teal);text-decoration:none;font-variant-numeric:tabular-nums;margin:.25rem 0 2rem}
+.big-tel{display:inline-flex;align-items:center;min-height:44px;font-size:clamp(2.2rem,4.4vw,3.25rem);font-weight:700;font-stretch:var(--wide);letter-spacing:-0.025em;color:var(--on-teal);text-decoration:none;font-variant-numeric:tabular-nums;margin:1rem 0 2.5rem}
+.big-tel:hover{color:var(--saffron)}
 .big-tel:active{opacity:.6}
-.facts{margin:0;border-top:1px solid var(--line)}
-.facts div{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);font-size:1rem}
-.facts dt{color:var(--slate);font-size:.9375rem}
-.facts dd{margin:0}
-.facts a{color:var(--ink);text-underline-offset:3px}
-.cform{background:var(--chalk);padding:clamp(1.75rem,4vw,2.75rem);--cut:20px}
+.facts{margin:0;display:grid;gap:1.4rem}
+.facts dt{color:var(--on-teal-soft);font-size:.875rem;margin-bottom:.15rem}
+.facts dd{margin:0;font-size:1.0625rem}
+.facts a{color:var(--on-teal);text-underline-offset:3px}
+.cform{background:var(--chalk);color:var(--ink);padding:clamp(1.75rem,4vw,2.75rem);--cut:20px}
 .cform h3{font-size:1.5rem;margin-bottom:.4rem}
 .cform>p{color:var(--slate);font-size:1rem;margin-bottom:1.5rem}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
@@ -268,7 +279,7 @@ a[href^="tel:"]{white-space:nowrap}
 .cform.sent .form-ok{display:block}
 
 /* Footer */
-.footer{background:var(--teal-deep);color:var(--on-teal-soft);padding:3.5rem 0 2rem;font-size:.9375rem}
+.footer{background:var(--night);color:var(--on-teal-soft);padding:3.5rem 0 2rem;font-size:.9375rem}
 .footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2rem;padding-bottom:2.25rem;border-bottom:1px solid var(--on-teal-line)}
 .footer-top img{height:34px;width:auto;margin-bottom:1rem}
 .footer-top p{max-width:28ch;margin:0}
@@ -285,10 +296,7 @@ a[href^="tel:"]{white-space:nowrap}
   .hero-grid{grid-template-columns:1fr}
   .hero h1{max-width:14em}
   .est{max-width:36rem}
-  .about-grid{grid-template-columns:1fr}
-  .about-photo{max-width:44rem}
-  .team{grid-template-columns:1fr 1fr}
-  .team h3{grid-column:1/-1;max-width:none}
+  .about-facts{grid-template-columns:1fr 1fr}
 }
 @media (max-width:900px){
   .pricing-head,.faq-grid,.contact-grid{grid-template-columns:1fr}
@@ -311,9 +319,14 @@ a[href^="tel:"]{white-space:nowrap}
   .process-head{position:static}
   .tl{column-gap:1rem}
   .tl.j .tl-body{padding:1.2rem 1.25rem 1.3rem}
-  .team{grid-template-columns:1fr}
+  .about-hero{height:78svh;min-height:26rem}
+  .about-hero img{object-position:86% 40%}
+  .about-hero h2{font-size:2.05rem;font-stretch:102%;max-width:none}
+  .about-facts{grid-template-columns:1fr}
+  .people{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:74%;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:1.25rem;margin-inline:-1.25rem;padding-inline:1.25rem;scrollbar-width:none}
+  .people::-webkit-scrollbar{display:none}
+  .person{scroll-snap-align:start}
   .frow{grid-template-columns:1fr}
-  .facts div{grid-template-columns:1fr;gap:.1rem}
   .footer-top{flex-direction:column}
 }
 @media (max-width:480px){
@@ -430,32 +443,39 @@ a[href^="tel:"]{white-space:nowrap}
     </div>
   </section>
 
-  <section class="band about" id="team">
-    <div class="wrap">
-      <div class="about-grid">
-        <figure class="about-photo">
-          <img class="chamfer" src="assets/jacob-rooftop.jpg" alt="Jacob James on a rooftop overlooking downtown Yakima" width="1800" height="1200" loading="lazy">
-          <figcaption>Jacob James, CEM, owner of JOIST, above downtown Yakima.</figcaption>
-        </figure>
-        <div class="about-copy">
-          <h2>An auditor who has walked hundreds of buildings.</h2>
-          <p>Since 2014, Jacob James has audited hundreds of commercial and industrial facilities, finding practical, cost-effective ways to save energy. He's a Clean Buildings qualified energy auditor, and he's local: Jacob, his wife and their kids are enjoying farm life in Central Washington.</p>
-          <ul class="creds">
-            <li>Certified Energy Manager (CEM) and Clean Buildings qualified energy auditor</li>
-            <li>Licensed, bonded and insured, WA contractor license JOISTL*750K2</li>
-            <li>Board member, <a href="https://downtownyakima.com/about/board/" target="_blank" rel="noopener">Downtown Association of Yakima</a></li>
-          </ul>
-        </div>
-      </div>
+  <section class="about" id="team">
+    <figure class="about-hero">
+      <img src="assets/rooftop-wide.jpg" alt="Jacob James, owner of JOIST, on a rooftop overlooking downtown Yakima" width="2600" height="1733" loading="lazy">
+      <figcaption class="wrap">
+        <h2>An auditor who has walked hundreds of buildings.</h2>
+        <p>Jacob James, CEM, owner of JOIST, above downtown Yakima</p>
+      </figcaption>
+    </figure>
+    <div class="wrap about-body">
+      <p class="about-lede">Since 2014, Jacob has audited hundreds of commercial and industrial facilities, finding practical, cost-effective ways to save energy. He's a Clean Buildings qualified energy auditor, and he's local: Jacob, his wife and their kids are enjoying farm life in Central Washington.</p>
+      <dl class="about-facts">
+        <div><dt>Certified Energy Manager</dt><dd>and a Clean Buildings qualified energy auditor.</dd></div>
+        <div><dt>Licensed, bonded and insured</dt><dd>Washington contractor license JOISTL*750K2.</dd></div>
+        <div><dt>Rooted in Yakima</dt><dd>Board member, <a href="https://downtownyakima.com/about/board/" target="_blank" rel="noopener">Downtown Association of Yakima</a>.</dd></div>
+      </dl>
       <div class="team">
-        <h3>Also on your project, with direct lines.</h3>
-        <div class="person">
-          <img src="assets/candice.jpg" alt="Candice Kelly" width="688" height="688" loading="lazy">
-          <div><strong>Candice Kelly, CEM</strong><span class="role">Clean Buildings Engineering Lead</span><a href="tel:+15095049682">(509) 504-9682</a><a href="mailto:candice@joistgc.com">Email Candice</a></div>
+        <div class="team-head">
+          <h3>The people on your project</h3>
+          <p>Two Certified Energy Managers and a construction project manager, each with a direct line.</p>
         </div>
-        <div class="person">
-          <img src="assets/caleb.jpg" alt="Caleb Smith" width="682" height="905" loading="lazy">
-          <div><strong>Caleb Smith</strong><span class="role">Construction Project Manager</span><a href="tel:+15093065510">(509) 306-5510</a><a href="mailto:caleb@joistgc.com">Email Caleb</a></div>
+        <div class="people">
+          <figure class="person">
+            <img class="chamfer" src="assets/jacob.jpg" alt="Jacob James" width="1007" height="759" loading="lazy" style="object-position:32% 30%">
+            <figcaption><h4>Jacob James, CEM</h4><span class="role">Owner</span><div class="links"><a href="tel:+15093798956">(509) 379-8956</a><a href="mailto:jacob@joistgc.com">Email Jacob</a></div></figcaption>
+          </figure>
+          <figure class="person">
+            <img class="chamfer" src="assets/candice.jpg" alt="Candice Kelly" width="688" height="688" loading="lazy">
+            <figcaption><h4>Candice Kelly, CEM</h4><span class="role">Clean Buildings Engineering Lead</span><div class="links"><a href="tel:+15095049682">(509) 504-9682</a><a href="mailto:candice@joistgc.com">Email Candice</a></div></figcaption>
+          </figure>
+          <figure class="person">
+            <img class="chamfer" src="assets/caleb.jpg" alt="Caleb Smith" width="682" height="905" loading="lazy" style="object-position:50% 20%">
+            <figcaption><h4>Caleb Smith</h4><span class="role">Construction Project Manager</span><div class="links"><a href="tel:+15093065510">(509) 306-5510</a><a href="mailto:caleb@joistgc.com">Email Caleb</a></div></figcaption>
+          </figure>
         </div>
       </div>
     </div>
