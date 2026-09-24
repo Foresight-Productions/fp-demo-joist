@@ -236,18 +236,22 @@ a[href^="tel:"]{white-space:nowrap}
 .tl .dur{display:block;margin-top:.75rem;font-size:.9375rem;font-weight:600;color:var(--saffron)}
 
 /* FAQ */
-.faq-grid{display:grid;grid-template-columns:1fr 1.7fr;gap:2.5rem 5rem}
-.faq-list details{border-top:1px solid var(--line)}
-.faq-list details:last-of-type{border-bottom:1px solid var(--line)}
-.faq-list summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;min-height:44px;padding:1.35rem 0;font-weight:600;font-size:1.1875rem}
-.faq-list summary::-webkit-details-marker{display:none}
-.faq-list summary::after{content:"";width:14px;height:14px;flex-shrink:0;background:linear-gradient(var(--teal),var(--teal)) center/100% 2px no-repeat,linear-gradient(var(--teal),var(--teal)) center/2px 100% no-repeat;transition:transform .25s var(--ease)}
-.faq-list details[open] summary::after{transform:rotate(45deg)}
-.faq-list summary:active{opacity:.6}
-.faq-list details p{color:var(--slate);padding:0 0 1.5rem;margin:0}
-.faq-list details[open] p{animation:faqIn .45s var(--ease)}
-@keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-.faq-src{font-size:.875rem;color:var(--slate);margin-top:1.25rem}
+.faq-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr);gap:3rem clamp(3rem,7vw,7rem);align-items:start}
+.faq-aside{position:sticky;top:120px}
+.faq-aside h2{margin-bottom:1.25rem}
+.faq-aside>p{color:var(--slate);margin:0}
+.ask{--cut:16px;display:flex;align-items:center;gap:1.1rem;margin-top:2.25rem;padding:1.1rem 1.4rem 1.1rem 1.1rem;background:var(--chalk);max-width:24rem}
+.ask img{width:4.5rem;height:4.5rem;object-fit:cover;object-position:32% 30%;flex-shrink:0;--cut:10px}
+.ask span{display:block;font-size:.9375rem;color:var(--slate)}
+.ask a{display:inline-flex;align-items:center;min-height:36px;font-size:1.3125rem;font-weight:700;font-stretch:var(--wide);letter-spacing:-0.015em;color:var(--teal);text-decoration:none;font-variant-numeric:tabular-nums}
+.ask a:hover{color:var(--teal-deep)}
+.ask a:active{opacity:.6}
+.qa{list-style:none;margin:0;padding:0;display:grid;gap:clamp(3rem,5vw,4rem)}
+.qa li::before{content:"";display:block;width:2.5rem;height:4px;background:var(--teal);margin-bottom:1.25rem}
+.qa h3{font-size:clamp(1.375rem,2.2vw,1.75rem);line-height:1.2;letter-spacing:-0.015em;margin-bottom:.8rem}
+.qa p{font-size:1.125rem;line-height:1.6;color:oklch(0.36 0.022 220);margin:0;max-width:56ch}
+.qa strong{font-weight:600;color:var(--ink)}
+.faq-src{font-size:.875rem;color:var(--slate);margin:clamp(3rem,5vw,4rem) 0 0}
 .faq-src a{color:var(--teal)}
 
 /* Contact */
@@ -300,6 +304,7 @@ a[href^="tel:"]{white-space:nowrap}
 }
 @media (max-width:900px){
   .pricing-head,.faq-grid,.contact-grid{grid-template-columns:1fr}
+  .faq-aside{position:static}
   .pr{grid-template-columns:1fr}
   .pr-side{padding-top:0}
 }
@@ -506,16 +511,22 @@ a[href^="tel:"]{white-space:nowrap}
 
   <section class="band" id="faq">
     <div class="wrap faq-grid">
-      <div>
+      <div class="faq-aside">
         <h2>Questions owners ask first.</h2>
-        <p class="muted" style="margin-top:1.25rem">Something else? Call or text Jacob at <a href="tel:+15093798956" style="color:var(--teal)">(509) 379-8956</a>.</p>
+        <p>Straight answers, from the state's program rules and how JOIST works.</p>
+        <div class="ask chamfer">
+          <img class="chamfer" src="assets/jacob.jpg" alt="" width="1007" height="759" loading="lazy">
+          <div><span>Something else? Call or text Jacob.</span><a href="tel:+15093798956">(509) 379-8956</a></div>
+        </div>
       </div>
-      <div class="faq-list">
-        <details open><summary>Does my building have to comply?</summary><p>If it's over 20,000 square feet, probably. Tier 2 covers buildings from 20,000 to 50,000 square feet plus all multifamily buildings over 20,000. Tier 1 covers buildings over 50,000. Manufacturing, agricultural, vacant and semi-heated buildings may qualify for exemptions.</p></details>
-        <details><summary>When is the deadline?</summary><p>Tier 2 buildings must submit compliance and incentive applications by July 1, 2027. Incentive money is first come, first served, so filing earlier matters.</p></details>
-        <details><summary>How can this cost me nothing?</summary><p>Qualifying Tier 2 buildings earn an Early Adopter Incentive of $0.30 per square foot, paid directly to the owner by their electric or gas utility. JOIST's Tier 2 pricing is matched to that incentive, and you forward payment to us within 30 days of receiving it.</p></details>
-        <details><summary>How long does it take?</summary><p>The site visit and paperwork usually take 1 to 3 months. After the state approves your package, the utility payment typically arrives within several weeks.</p></details>
-        <details><summary>What happens if I miss the deadline?</summary><p>The Department of Commerce can assess progressive penalties for non-compliance, up to $0.30 per square foot. You'd also lose your place in line for incentive money.</p></details>
+      <div>
+        <ol class="qa">
+          <li><h3>Does my building have to comply?</h3><p>If it's over 20,000 square feet, probably. <strong>Tier 2</strong> covers buildings from 20,000 to 50,000 square feet, plus all multifamily buildings over 20,000. <strong>Tier 1</strong> covers buildings over 50,000. Manufacturing, agricultural, vacant and semi-heated buildings may qualify for an exemption.</p></li>
+          <li><h3>How can this cost me nothing?</h3><p>Qualifying Tier 2 buildings earn an Early Adopter Incentive of <strong>$0.30 per square foot</strong>, paid to the owner by their electric or gas utility. JOIST's Tier 2 pricing is matched to that incentive, and you forward our fee within 30 days of receiving it.</p></li>
+          <li><h3>When is the deadline?</h3><p>Tier 2 buildings must submit compliance and incentive applications by <strong>July 1, 2027</strong>. Incentive money is first come, first served, so filing earlier matters.</p></li>
+          <li><h3>How long does it take?</h3><p>The site visit and paperwork usually take <strong>1 to 3 months</strong>. After the state approves your package, the utility payment typically arrives within several weeks.</p></li>
+          <li><h3>What happens if I miss the deadline?</h3><p>The Department of Commerce can assess progressive penalties, <strong>up to $0.30 per square foot</strong>. You'd also lose your place in line for incentive money.</p></li>
+        </ol>
         <p class="faq-src">Program details from the <a href="https://www.commerce.wa.gov/cbps/cbps-grants-incentives/cbps-tier2-early-adopter-incentive/" target="_blank" rel="noopener">Washington State Department of Commerce</a>.</p>
       </div>
     </div>
