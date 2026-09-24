@@ -99,7 +99,7 @@ a,button,summary,label,input{-webkit-tap-highlight-color:transparent;touch-actio
 #nav::after{content:"";position:absolute;left:0;right:0;top:100%;height:22px;pointer-events:none;background:linear-gradient(oklch(0.27 0.025 225 / .09),oklch(0.27 0.025 225 / 0));opacity:0;transition:opacity .3s ease}
 #nav.scrolled::after{opacity:1}
 .nav-logo{display:flex;align-items:center;min-height:44px;flex-shrink:0}
-.nav-logo img{height:25px;width:auto}
+.nav-logo img{height:30px;width:auto}
 .nav-links{display:flex;align-items:center;gap:2rem}
 .nav-links a{text-decoration:none;font-weight:500;font-size:1rem;padding:.6rem 0;transition:color .15s ease}
 .nav-links a:not(.btn){position:relative}
@@ -164,14 +164,23 @@ a[href^="tel:"]{white-space:nowrap}
 /* Pricing */
 .pricing-head{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 4rem;align-items:end;margin-bottom:3rem}
 .pricing-head p{margin:0}
-.ptable{width:100%;border-collapse:collapse;font-size:1.0625rem}
-.ptable th{text-align:left;font-size:.875rem;font-weight:500;color:var(--slate);padding:0 1.5rem .9rem 0;border-bottom:2px solid var(--ink)}
-.ptable td{vertical-align:top;padding:1.6rem 1.5rem 1.6rem 0;border-bottom:1px solid var(--line);line-height:1.5}
-.ptable td:first-child{font-weight:700;font-stretch:var(--wide);font-size:1.3125rem;line-height:1.25;letter-spacing:-0.01em;width:30%}
-.ptable td:first-child small{display:block;font-weight:400;font-stretch:100%;font-size:.9375rem;color:var(--slate);letter-spacing:0;margin-top:.35rem}
-.ptable td:last-child{width:32%}
-.ptable tr.lead td:last-child strong{background:var(--saffron);padding:.05em .3em;margin-left:-.3em;font-weight:700}
-.ptable b{font-weight:600}
+.pr{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(2rem,5vw,4.5rem);align-items:stretch}
+.pr h3{font-size:1.5rem}
+.pr-size{font-size:1rem;color:var(--slate);margin:.3rem 0 0;max-width:34ch}
+.pr-main{--cut:22px;background:var(--chalk);padding:clamp(1.75rem,4vw,3rem);display:flex;flex-direction:column;box-shadow:0 30px 60px -40px oklch(0.27 0.025 225 / .35)}
+.pr-price{font-size:clamp(5.5rem,12vw,9rem);font-weight:700;font-stretch:var(--wide);letter-spacing:-0.045em;line-height:.85;margin:2.25rem 0 1rem;font-variant-numeric:lining-nums}
+.pr-note{font-size:1.1875rem;line-height:1.5;max-width:30rem;margin:0 0 2rem}
+.pr-note strong{font-weight:600}
+.pr-list{list-style:none;padding:1.5rem 0 0;margin:0 0 2.25rem;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:.8rem 2rem;font-size:1rem}
+.pr-list li{position:relative;padding-left:1.3rem}
+.pr-list li::before{content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;background:var(--teal)}
+.pr-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem 2rem}
+.pr-foot p{margin:0;font-size:1rem}
+.pr-foot strong{font-weight:600}
+.pr-side{display:flex;flex-direction:column;padding-top:clamp(1.75rem,4vw,3rem)}
+.pr-side article+article{margin-top:2.25rem;padding-top:2.25rem;border-top:1px solid var(--line)}
+.pr-side .pr-alt{font-size:clamp(2rem,3.4vw,2.6rem);font-weight:700;font-stretch:var(--wide);letter-spacing:-0.025em;line-height:1.05;margin:1.25rem 0 .6rem}
+.pr-side p:last-child{color:var(--slate);font-size:1rem;margin:0;max-width:36ch}
 
 /* About */
 .about{background:var(--chalk)}
@@ -261,7 +270,7 @@ a[href^="tel:"]{white-space:nowrap}
 /* Footer */
 .footer{background:var(--teal-deep);color:var(--on-teal-soft);padding:3.5rem 0 2rem;font-size:.9375rem}
 .footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2rem;padding-bottom:2.25rem;border-bottom:1px solid var(--on-teal-line)}
-.footer-top img{height:27px;width:auto;margin-bottom:1rem}
+.footer-top img{height:34px;width:auto;margin-bottom:1rem}
 .footer-top p{max-width:28ch;margin:0}
 .footer-links{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:0 1.75rem;align-content:flex-start}
 .footer-links a{display:inline-flex;align-items:center;min-height:44px;color:var(--on-teal);text-decoration:none}
@@ -283,13 +292,8 @@ a[href^="tel:"]{white-space:nowrap}
 }
 @media (max-width:900px){
   .pricing-head,.faq-grid,.contact-grid{grid-template-columns:1fr}
-  .ptable,.ptable tbody,.ptable tr,.ptable td{display:block;width:auto!important}
-  .ptable thead{display:none}
-  .ptable tr{padding:1.4rem 0;border-bottom:1px solid var(--line)}
-  .ptable tr:first-child{border-top:2px solid var(--ink)}
-  .ptable td{border:0;padding:0 0 .75rem}
-  .ptable td:last-child{padding-bottom:0}
-  .ptable td[data-h]::before{content:attr(data-h);display:block;font-size:.875rem;color:var(--slate);margin-bottom:.15rem}
+  .pr{grid-template-columns:1fr}
+  .pr-side{padding-top:0}
 }
 @media (max-width:768px){
   .nav-toggle{display:flex}
@@ -313,6 +317,7 @@ a[href^="tel:"]{white-space:nowrap}
   .footer-top{flex-direction:column}
 }
 @media (max-width:480px){
+  .pr-list{grid-template-columns:1fr}
   h1{font-size:2.3rem;font-stretch:104%}
 }
 @media (prefers-reduced-motion:reduce){
@@ -387,29 +392,41 @@ a[href^="tel:"]{white-space:nowrap}
   <section class="band" id="pricing">
     <div class="wrap">
       <div class="pricing-head">
-        <h2>What you pay depends on your building's size.</h2>
-        <p class="muted">Washington sorts covered buildings into two tiers by floor area, and some buildings can file for an exemption. If you aren't sure where yours lands, the onboarding form tells us quickly.</p>
+        <h2>What it costs.</h2>
+        <p class="muted">Washington sorts covered buildings into two tiers by floor area, and some can file for an exemption. Not sure where yours lands? The onboarding form tells us quickly.</p>
       </div>
-      <table class="ptable">
-        <thead><tr><th scope="col">Building size</th><th scope="col">What applies</th><th scope="col">Your cost with JOIST</th></tr></thead>
-        <tbody>
-          <tr class="lead">
-            <td data-h="Building size">20,000 to 50,000 sq ft<small>plus multifamily buildings over 20,000 sq ft</small></td>
-            <td data-h="What applies"><b>Tier 2.</b> Benchmarking, an Energy Management Plan and an operations and maintenance program, filed by July 1, 2027.</td>
-            <td data-h="Your cost with JOIST"><strong>$0 for most buildings.</strong> Our fee is matched to the state's $0.30/sq ft Early Adopter Incentive.</td>
-          </tr>
-          <tr>
-            <td data-h="Building size">Over 50,000 sq ft</td>
-            <td data-h="What applies"><b>Tier 1.</b> A full energy audit and compliance package, from benchmarking to submittal.</td>
-            <td data-h="Your cost with JOIST">Typically half to a third of what larger firms charge.</td>
-          </tr>
-          <tr>
-            <td data-h="Building size">Any size<small>manufacturing, agricultural, vacant or semi-heated</small></td>
-            <td data-h="What applies">Often exempt. We document the exemption and file it quickly.</td>
-            <td data-h="Your cost with JOIST">Quoted after onboarding.</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="pr">
+        <article class="pr-main chamfer">
+          <h3>Tier 2</h3>
+          <p class="pr-size">20,000 to 50,000 sq ft, plus multifamily buildings over 20,000 sq ft</p>
+          <p class="pr-price">$0</p>
+          <p class="pr-note"><strong>For most buildings.</strong> Our fee is matched to the state's $0.30/sq ft Early Adopter Incentive, which your utility pays to you.</p>
+          <ul class="pr-list">
+            <li>Energy benchmarking</li>
+            <li>Energy Management Plan</li>
+            <li>Operations and maintenance program</li>
+            <li>State filing and incentive application</li>
+          </ul>
+          <div class="pr-foot">
+            <p>Filing deadline <strong>July 1, 2027</strong></p>
+            <a href="#contact" class="btn btn-go">Start onboarding</a>
+          </div>
+        </article>
+        <div class="pr-side">
+          <article>
+            <h3>Tier 1</h3>
+            <p class="pr-size">Over 50,000 sq ft</p>
+            <p class="pr-alt">Half to a third</p>
+            <p>of what larger firms typically charge for a full energy audit and compliance package.</p>
+          </article>
+          <article>
+            <h3>Exemptions</h3>
+            <p class="pr-size">Manufacturing, agricultural, vacant or semi-heated buildings, any size</p>
+            <p class="pr-alt">Often exempt</p>
+            <p>We document the exemption and file it quickly. Quoted after onboarding.</p>
+          </article>
+        </div>
+      </div>
     </div>
   </section>
 
